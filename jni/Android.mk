@@ -3,9 +3,6 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE := hacksepol
 
-#LOCAL_CFLAGS := -Wl,-whole-archive -l./obj/local/arm64-v8a/libsepol.a -Wl,-no-whole-archive
-#LOCAL_LDFLAGS := -Wl,-whole-archive -Wl,-lsepol.a -Wl,-no-whole-archive
-
 common_src_files := \
 	libsepol/src/assertion.c \
 	libsepol/src/avrule_block.c \
@@ -55,10 +52,11 @@ LOCAL_C_INCLUDES := \
 	$(common_includes) \
 	$(LOCAL_PATH)/libsepol/include
 
-
 LOCAL_SRC_FILES := \
 	$(common_src_files) \
 	hacksepol/main.c
+
+#LOCAL_STATIC_LIBRARIES := libsepol
 
 include $(BUILD_SHARED_LIBRARY)
 
